@@ -20,12 +20,14 @@ public class EmployeePayrollServiceImpl implements EmployeePayrollService {
     @Autowired
     private EmployeePayrollRepository employeePayrollRepository;
 
+    // get all employees data
     @Override
     public List<EmployeePayroll> getEmployeePayroll() {
         log.info("Fetching all employee payroll data");
         return employeePayrollRepository.findAll();
     }
 
+    //get employee data by id
     @Override
     public EmployeePayroll getEmployeePayrollById(int empId) {
         log.info("Fetching employee payroll data for ID: " + empId);
@@ -33,6 +35,7 @@ public class EmployeePayrollServiceImpl implements EmployeePayrollService {
                 .orElseThrow(() -> new EmployeePayrollException("Employee with ID " + empId + " not found"));
     }
 
+    // create a new employee data
     @Override
     public EmployeePayroll createEmployeePayroll(EmployeePayrollDTO empPayrollDTO) {
         log.info("Creating new employee payroll data for: " + empPayrollDTO.getName());
@@ -40,6 +43,7 @@ public class EmployeePayrollServiceImpl implements EmployeePayrollService {
         return employeePayrollRepository.save(empData);
     }
 
+    //update the employee data details
     @Override
     public EmployeePayroll updateEmployeePayroll(int empId, EmployeePayrollDTO empPayrollDTO) {
         log.info("Updating employee payroll data for ID: " + empId);
@@ -47,7 +51,8 @@ public class EmployeePayrollServiceImpl implements EmployeePayrollService {
         empData.updateEmployeePayrollData(empPayrollDTO);
         return employeePayrollRepository.save(empData);
     }
-
+    
+    // delete the employee data by id
     @Override
     public void deleteEmployeePayrollData(int empId) {
         log.info("Deleting employee payroll data for ID: " + empId);
@@ -55,4 +60,5 @@ public class EmployeePayrollServiceImpl implements EmployeePayrollService {
         employeePayrollRepository.delete(empData);
     }
 }
+
 
