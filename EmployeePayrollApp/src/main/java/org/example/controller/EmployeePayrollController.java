@@ -31,6 +31,7 @@ public class EmployeePayrollController {
     @Autowired
     private EmployeePayrollService employeePayrollService;
 
+    //get all Employee data
     @GetMapping(value = {"", "/", "/get"})
     public ResponseEntity<ResponseDTO> getEmployeePayrollData() {
         log.info("GET Request - Fetch all employees");
@@ -39,6 +40,7 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(respDTO, HttpStatus.OK);
     }
 
+    // get a particular employee data
     @GetMapping("/get/{empId}")
     public ResponseEntity<ResponseDTO> getEmployeePayrollData(@PathVariable("empId") int empId) {
         log.info("GET Request - Fetch employee with ID: " + empId);
@@ -47,6 +49,7 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(respDTO, HttpStatus.OK);
     }
 
+    // create a new employee data
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createEmployeePayrollData(
             @Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
@@ -56,6 +59,7 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(respDTO, HttpStatus.CREATED);
     }
 
+    // update the employee data
     @PutMapping("/update/{empId}")
     public ResponseEntity<ResponseDTO> updateEmployeePayrollData(
             @PathVariable("empId") int empId,
@@ -66,6 +70,7 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(respDTO, HttpStatus.OK);
     }
 
+    // delete employee data
     @DeleteMapping("/delete/{empId}")
     public ResponseEntity<ResponseDTO> deleteEmployeePayroll(@PathVariable("empId") int empId) {
         log.info("DELETE Request - Delete employee with ID: " + empId);
@@ -75,4 +80,5 @@ public class EmployeePayrollController {
         return new ResponseEntity<>(respDTO, HttpStatus.OK);
     }
 }
+
 
