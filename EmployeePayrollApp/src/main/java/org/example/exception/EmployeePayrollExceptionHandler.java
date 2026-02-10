@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 @Slf4j
 public class EmployeePayrollExceptionHandler {
-
+    // Handling the method argumnets exception
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionResponse> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException exception) {
@@ -35,6 +35,7 @@ public class EmployeePayrollExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    // Handling Employee data exception
     @ExceptionHandler(EmployeePayrollException.class)
     public ResponseEntity<ExceptionResponse> handleEmployeePayrollException(
             EmployeePayrollException exception) {
@@ -49,4 +50,5 @@ public class EmployeePayrollExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 }
+
 
