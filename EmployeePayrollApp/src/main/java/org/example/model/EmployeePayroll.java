@@ -47,10 +47,12 @@ public class EmployeePayroll {
         this.updatedDate = LocalDateTime.now();
     }
 
+    // updating the employee data
     public void updateEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
         this.name = employeePayrollDTO.getName();
         this.salary = employeePayrollDTO.getSalary();
         this.updatedDate = LocalDateTime.now();
     }
 }
+
 
